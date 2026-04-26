@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeployStacker — Premium Web Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ══════════════════════════════════════ */
+        /* MOBILE-FIRST BASE STYLES             */
+        /* ══════════════════════════════════════ */
+        :root {
+            --bg: #f4f1ec;
+            --bg-warm: #efe6db;
+            --bg-light: #faf8f5;
+            --white: #ffffff;
+            --heading: #2b4357;
+            --heading-soft: #3d5a6e;
+            --accent: #7f91a8;
+            --accent-soft: #a3b3c4;
+            --gold: #c6a96b;
+            --gold-soft: #d4bf8a;
+            --text: #1a1a1a;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --text-light: #aaa;
+            --border: #e5dfd5;
+            --border-soft: #ede8df;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-xs: 6px;
+            --transition: 0.35s cubic-bezier(0.22, 0.1, 0.15, 1);
+            --transition-fast: 0.2s ease;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --max-width: 1120px;
+            --section-padding: 4rem 1.2rem;      /* mobile default */
+            --section-padding-tablet: 5rem 2rem;
+            --section-padding-desktop: 7rem 2.5rem;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.7;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ── skip custom cursor on touch devices ── */
+        @media (hover: hover) and (pointer: fine) {
+            body {
+                cursor: none;
+            }
+            .cursor-dot, .cursor-ring {
+                display: block;
+            }
+        }
+        @media (hover: none), (pointer: coarse) {
+            .cursor-dot, .cursor-ring {
+                display: none !important;
+            }
+            body {
+                cursor: auto;
+            }
+        }
+        .cursor-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+            mix-blend-mode: difference;
+        }
+        .cursor-ring {
+            width: 28px;
+            height: 28px;
+            border: 1.5px solid rgba(127, 145, 168, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.28s, height 0.28s, border-color 0.28s, transform 0.08s ease-out;
+        }
+
+        /* ── FLOATING WHATSAPP BUBBLE ── */
+        .whatsapp-bubble {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .whatsapp-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.55);
+        }
+        .whatsapp-bubble .wa-icon {
+            width: 32px;
+            height: 32px;
+            fill: #ffffff;
+        }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.2rem;
+            z-index: 100;
+            background: rgba(244, 241, 236, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-soft);
+            transition: all var(--transition-fast);
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--heading);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .nav-logo:hover {
+            opacity: 0.75;
+        }
+        .nav-links {
+            display: none;               /* hidden on mobile by default */
+            gap: 0;
+            list-style: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(244, 241, 236, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.2rem;
+            box-shadow: var(--shadow-md);
+        }
+        .nav-links.active {
+            display: flex;
+        }
+        .nav-links li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        .nav-links li:last-child {
+            border-bottom: none;
+        }
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+        }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 101;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--heading);
+            border-radius: 1px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .nav-cta {
+            display: none;              /* hidden on mobile, shown in hamburger menu or as separate */
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1.2rem 3rem;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background: var(--bg);
+        }
+        .hero-accent-dot {
+            display: none;              /* off on mobile for performance */
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-left {
+            animation: fadeSlideUp 0.9s ease both;
+            order: 2;
+        }
+        .hero-right {
+            order: 1;
+            animation: fadeSlideUp 0.9s 0.15s ease both;
+        }
+        .hero-overline {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .hero-overline::before {
+            content: '';
+            width: 18px;
+            height: 1px;
+            background: var(--accent);
+            border-radius: 1px;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--heading);
+            margin-bottom: 1rem;
+        }
+        .hero-title .italic {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .hero-sub {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 400px;
+            line-height: 1.6;
+            margin: 0 auto 1.8rem;
+        }
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .btn-primary, .btn-outline, .btn-submit {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.8rem 1.8rem;
+            border-radius: 24px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+            width: 100%;
+            max-width: 240px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--heading);
+            color: #fff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #1f3446;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--heading);
+            border: 1.5px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(127, 145, 168, 0.04);
+            transform: translateY(-2px);
+        }
+        .btn-submit {
+            background: var(--heading);
+            color: #fff;
+            border: none;
+            width: 100%;
+            max-width: 100%;
+            padding: 0.9rem 1.8rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: all var(--transition-fast);
+            border-radius: 24px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background: #1f3446;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero Card */
+        .hero-card-elegant {
+            width: 220px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform var(--transition);
+            will-change: transform;
+        }
+        .hero-card-elegant .hce-top {
+            padding: 1rem 1rem 0.5rem;
+            display: flex;
+            gap: 4px;
+        }
+        .hero-card-elegant .hce-top span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .hce-top span:nth-child(1) { background: #e8c5a0; }
+        .hce-top span:nth-child(2) { background: #c6a96b; }
+        .hce-top span:nth-child(3) { background: #b8c9d4; }
+        .hero-card-elegant .hce-body {
+            padding: 0 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .hce-line {
+            height: 5px;
+            border-radius: 3px;
+            background: #ede8df;
+        }
+        .hce-line.w65 { width: 65%; }
+        .hce-line.w80 { width: 80%; }
+        .hce-line.w45 { width: 45%; background: var(--accent-soft); }
+        .hce-line.w90 { width: 90%; }
+        .hce-img-block {
+            width: 100%;
+            height: 70px;
+            background: #faf8f5;
+            border-radius: 6px;
+            border: 1px dashed var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* ── TRUST STRIP ── */
+        .trust-strip {
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+            background: var(--white);
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .trust-item {
+            text-align: center;
+            flex: 1 1 40%;
+            min-width: 100px;
+        }
+        .trust-item .t-num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            line-height: 1;
+            color: var(--heading);
+        }
+        .trust-item .t-num span { color: var(--accent); font-weight: 500; }
+        .trust-item .t-label {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+        .trust-divider {
+            display: none;
+        }
+
+        /* ── SECTION SHARED ── */
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            width: 100%;
+        }
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .section-label::before {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--accent);
+            border-radius: 1px;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--heading);
+            margin-bottom: 0.6rem;
+        }
+        .section-subtitle {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 400px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* ── CARD BASE ── */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            border-color: var(--border);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ── MOBILE GRID DEFAULTS: single column ── */
+        .services-grid,
+        .projects-grid,
+        .testimonials-grid,
+        .team-grid,
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        /* ── SERVICE CARD ── */
+        .service-card {
+            padding: 1.8rem 1.5rem;
+        }
+        .service-card .s-icon-box {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-warm);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-card .s-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--heading);
+        }
+        .service-card .s-desc {
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 0.3rem;
+        }
+
+        /* ── PROJECT CARD ── */
+        .project-card {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .project-card .p-thumb {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+            background: #e5dfd5;
+            flex-shrink: 0;
+        }
+        .project-card .p-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.55s ease;
+        }
+        .project-card:hover .p-thumb img { transform: scale(1.04); }
+        .p-thumb-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .p-thumb-fallback .p-fl {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: rgba(43, 67, 87, 0.06);
+            font-weight: 600;
+        }
+        .project-card .p-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(43, 67, 87, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+            z-index: 3;
+            pointer-events: none;
+        }
+        .project-card:hover .p-overlay { opacity: 1; }
+        .p-overlay-btn {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            padding: 0.45rem 1.1rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .p-overlay-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #fff;
+        }
+        .project-card .p-info {
+            padding: 1rem 1.1rem 1.2rem;
+        }
+        .project-card .p-name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--heading);
+            line-height: 1.2;
+        }
+        .project-card .p-desc {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin: 0.3rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .project-card .p-tags {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            margin-top: 0.3rem;
+        }
+        .p-tag {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            background: var(--bg-light);
+            white-space: nowrap;
+        }
+        .p-tag.gold-tag {
+            color: var(--gold);
+            border-color: rgba(198, 169, 107, 0.35);
+            background: rgba(198, 169, 107, 0.06);
+        }
+
+        /* ── TESTIMONIAL CARD ── */
+        .testimonial-card {
+            padding: 1.8rem 1.5rem;
+        }
+        .testimonial-card .t-stars {
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-card .t-quote {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1rem;
+            margin: 0.8rem 0;
+        }
+        .testimonial-card .t-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--accent-soft);
+            opacity: 0.5;
+            line-height: 1;
+        }
+        .t-author {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-top: auto;
+        }
+        .t-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-warm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            border: 2px solid var(--border-soft);
+            flex-shrink: 0;
+        }
+        .t-author-info .t-name {
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--heading);
+        }
+        .t-author-info .t-role {
+            font-size: 0.68rem;
+            font-weight: 300;
+            color: var(--text-muted);
+        }
+
+        /* ── CLIENTS ── */
+        #clients {
+            background: var(--bg);
+            padding: 2.5rem 1.2rem;
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+        }
+        .clients-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .client-name {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: #c5bfb5;
+            white-space: nowrap;
+        }
+
+        /* ── TEAM CARD ── */
+        .team-card .tm-avatar {
+            height: 240px;
+            overflow: hidden;
+            background: #e5dfd5;
+        }
+        .team-card .tm-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.5s ease;
+        }
+        .team-card:hover .tm-avatar img { transform: scale(1.03); }
+        .team-card .tm-info {
+            padding: 1rem 1.2rem;
+        }
+        .team-card .tm-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--heading);
+        }
+        .team-card .tm-role {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 0.1rem;
+        }
+
+        /* ── PROCESS STEP ── */
+        .process-step {
+            padding: 1.6rem 1.2rem;
+            text-align: center;
+        }
+        .process-step .ps-num {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: var(--bg-warm);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .process-step .ps-icon {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+        .process-step .ps-name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--heading);
+        }
+        .process-step .ps-desc {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 0.3rem;
+        }
+        .process-step .ps-arrow-mob {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-top: 0.5rem;
+        }
+
+        /* ── CONTACT FORM ── */
+        #contact-form {
+            background: var(--white);
+            padding: 4rem 1.2rem;
+        }
+        .form-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--heading);
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.02em;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text);
+            background: var(--bg-light);
+            transition: border-color var(--transition-fast);
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(127,145,168,0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-submit {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        /* ── FINAL CTA ── */
+        #cta-final {
+            background: var(--bg-warm);
+            text-align: center;
+            padding: 4rem 1.2rem;
+        }
+        .cta-final-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-weight: 600;
+            color: var(--heading);
+            line-height: 1.2;
+        }
+        .cta-final-title .italic { font-style: italic; color: var(--accent); }
+        .cta-final-sub {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            max-width: 380px;
+            margin: 1rem auto 2rem;
+        }
+        .cta-final-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .cta-final-contact {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #faf8f5;
+            border-top: 1px solid var(--border-soft);
+            padding: 1.5rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--heading);
+        }
+        .footer-logo span { color: var(--accent); font-weight: 500; }
+        .footer-copy {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--text-muted);
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.06s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.18s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+        .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ══════════════════════════════════════ */
+        /* TABLET (≥768px) OVERRIDES           */
+        /* ══════════════════════════════════════ */
+        @media (min-width: 768px) {
+            nav {
+                padding: 1.2rem 2rem;
+            }
+            .hamburger { display: none; }
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background: transparent;
+                border-bottom: none;
+                padding: 0;
+                box-shadow: none;
+                gap: 2rem;
+            }
+            .nav-links li {
+                border-bottom: none;
+                padding: 0;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            .nav-cta {
+                display: inline-block;
+                font-family: var(--font-body);
+                font-size: 0.8rem;
+                font-weight: 500;
+                background: var(--heading);
+                color: #fff;
+                border: none;
+                padding: 0.6rem 1.4rem;
+                border-radius: 24px;
+                cursor: pointer;
+                transition: all var(--transition-fast);
+            }
+            .nav-cta:hover { background: #1f3446; transform: translateY(-1px); }
+            .hero {
+                padding: 7rem 2rem 4rem;
+            }
+            .hero-inner {
+                flex-direction: row;
+                text-align: left;
+                gap: 3rem;
+            }
+            .hero-left { order: 1; flex: 1; }
+            .hero-right { order: 2; flex: 1; display: flex; justify-content: center; }
+            .hero-overline { justify-content: flex-start; }
+            .hero-title { font-size: clamp(2.8rem, 5vw, 4.5rem); }
+            .hero-sub { margin: 0 0 2rem; }
+            .hero-actions { flex-direction: row; align-items: center; }
+            .btn-primary, .btn-outline, .btn-submit { width: auto; max-width: none; }
+            .hero-card-elegant { width: 260px; }
+            .hero-card-elegant .hce-img-block { height: 90px; }
+            section { padding: var(--section-padding-tablet); }
+            .trust-strip { padding: 2.5rem 2rem; gap: 2.5rem; }
+            .trust-divider {
+                display: block;
+                width: 1px;
+                height: 40px;
+                background: var(--border);
+            }
+            .trust-item { flex: 0 0 auto; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .ps-arrow-mob { display: none; }
+            .cta-final-actions { flex-direction: row; justify-content: center; }
+            footer { flex-direction: row; justify-content: space-between; text-align: left; }
+            .form-card { padding: 2.5rem 2.5rem; }
+        }
+
+        /* ══════════════════════════════════════ */
+        /* DESKTOP (≥1024px) OVERRIDES         */
+        /* ══════════════════════════════════════ */
+        @media (min-width: 1024px) {
+            .hero { padding: 8rem 2.5rem 5rem; }
+            .hero-title { font-size: clamp(3rem, 6vw, 5.5rem); }
+            .hero-card-elegant { width: 320px; }
+            .hero-card-elegant .hce-img-block { height: 120px; font-size: 2rem; }
+            section { padding: var(--section-padding-desktop); }
+            .services-grid { grid-template-columns: repeat(4, 1fr); }
+            .projects-grid { grid-template-columns: repeat(3, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+            .team-grid { grid-template-columns: repeat(3, 1fr); }
+            .process-grid { grid-template-columns: repeat(5, 1fr); }
+            .trust-strip { gap: 4rem; }
+            .hero-accent-dot { display: block; }
+            .form-card { max-width: 700px; padding: 3rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom cursor (hidden on touch devices via CSS) -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- FLOATING WHATSAPP BUBBLE -->
+    <a href="https://wa.me/9996005270?text=Hello%20DeployStacker%2C%20I%27m%20interested%20in%20your%20web%20development%20services." 
+       class="whatsapp-bubble" 
+       target="_blank" 
+       rel="noopener" 
+       aria-label="Chat on WhatsApp">
+        <!-- WhatsApp icon (SVG) -->
+        <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.85 0.74 5.52 2.03 7.85L0 32l8.4-2.03C10.92 31.27 13.37 32 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 28.8c-2.27 0-4.39-0.59-6.24-1.62l-0.45-0.27-4.98 1.2 1.21-4.87-0.28-0.44C4.66 21.63 4 18.89 4 16 4 9.37 9.37 4 16 4s12 5.37 12 12-5.37 12-12 12zm6.59-8.99c-0.36-0.18-2.13-1.05-2.46-1.17-0.33-0.12-0.57-0.18-0.81 0.18s-0.93 1.17-1.14 1.41c-0.21 0.24-0.42 0.27-0.78 0.09s-1.53-0.57-2.91-1.8c-1.08-0.96-1.8-2.14-2.01-2.5s-0.02-0.56 0.16-0.74c0.16-0.16 0.36-0.42 0.54-0.63s0.24-0.36 0.36-0.6c0.12-0.24 0.06-0.45-0.02-0.63s-0.81-1.95-1.11-2.67c-0.29-0.71-0.59-0.61-0.81-0.62h-0.69c-0.24 0-0.63 0.09-0.96 0.45s-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c0.18 0.24 2.54 3.88 6.15 5.44 0.86 0.37 1.53 0.59 2.05 0.76 0.86 0.27 1.65 0.23 2.27 0.14 0.69-0.1 2.13-0.87 2.43-1.71s0.3-1.56 0.21-1.71c-0.09-0.15-0.33-0.24-0.69-0.42z"/>
+        </svg>
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#home" class="nav-logo">DEPLOY<span>STACKER</span></a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact-form">Contact</a></li>
+            <li class="mobile-cta"><a href="#  " class="nav-cta" style="display:none;">Get a Website</a></li>
+        </ul>
+        <button class="nav-cta" id="desktopCta" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Get a Website</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-accent-dot dot-1"></div>
+        <div class="hero-accent-dot dot-2"></div>
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-overline">Premium Web Development</div>
+                <h1 class="hero-title">We Build Websites<br>That Feel <span class="italic">Premium.</span></h1>
+                <p class="hero-sub">Three builders crafting elegant, high-performing websites for businesses that value quality.</p>
+                <div class="hero-actions">
+                    <a href="#contact-form" class="btn-primary">Start Your Project</a>
+                    <a href="#projects" class="btn-outline">View Our Work</a>
+                </div>
+            </div>
+            <div class="hero-right" id="heroRight">
+                <div class="hero-card-elegant" id="heroCard">
+                    <div class="hce-top"><span></span><span></span><span></span></div>
+                    <div class="hce-body">
+                        <div class="hce-line w65"></div>
+                        <div class="hce-line w80"></div>
+                        <div class="hce-line w45"></div>
+                        <div class="hce-img-block">✦</div>
+                        <div class="hce-line w90"></div>
+                        <div class="hce-line w65"></div>
+                        <div class="hce-line w45"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+        <div class="trust-item"><div class="t-num">10<span>+</span></div><div class="t-label">Projects Delivered</div></div>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><div class="t-num">7<span>d</span></div><div class="t-label">Avg Delivery Time</div></div>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><div class="t-num">3<span>x</span></div><div class="t-label">Traffic Increase</div></div>
+        <div class="trust-divider"></div>
+        <div class="trust-item"><div class="t-num">100<span>%</span></div><div class="t-label">Client Satisfaction</div></div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">From a simple business page to a full online store — we handle everything with care and precision.</p>
+            </div>
+            <div class="services-grid reveal-stagger">
+                <div class="service-card card">
+                    <div class="s-icon-box">🏪</div>
+                    <div class="s-name">Business Websites</div>
+                    <p class="s-desc">Professional websites for restaurants, salons, clinics, and shops.</p>
+                </div>
+                <div class="service-card card">
+                    <div class="s-icon-box">🛒</div>
+                    <div class="s-name">E-Commerce Stores</div>
+                    <p class="s-desc">Sell products online with a smooth, secure storefront.</p>
+                </div>
+                <div class="service-card card">
+                    <div class="s-icon-box">📱</div>
+                    <div class="s-name">Landing Pages</div>
+                    <p class="s-desc">High-converting pages built for a single goal.</p>
+                </div>
+                <div class="service-card card">
+                    <div class="s-icon-box">⚡</div>
+                    <div class="s-name">Speed & SEO</div>
+                    <p class="s-desc">Every site loads fast and is Google-friendly from day one.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-inner">
+            <div class="reveal"><div class="section-label">Our Work</div><h2 class="section-title">Selected Demo  Projects</h2><p class="section-subtitle">Real websites crafted for real businesses.</p></div>
+            <div class="projects-grid reveal-stagger">
+                <div class="project-card card" data-url="https://www.diggin.co.in/">
+                    <div class="p-thumb"><div class="p-thumb-fallback"><span class="p-fl">S</span></div><img src="image/resturent.png" alt="Spice Route" loading="lazy" onerror="this.style.opacity='0';this.previousElementSibling.style.display='flex';"><div class="p-overlay"><span class="p-overlay-btn">View Project</span></div></div>
+                    <div class="p-info"><div class="p-name"> Diggin Spice Route Restaurant</div><p class="p-desc">Full website with menu & online ordering — 3x bookings in first month.</p><div class="p-tags"><span class="p-tag gold-tag">Business</span><span class="p-tag">Restaurant</span></div></div>
+                </div>
+                <div class="project-card card" data-url="https://threadsofgrace.in/">
+                    <div class="p-thumb"><div class="p-thumb-fallback"><span class="p-fl">T</span></div><img src="image/threads.png" alt="Trendy Threads" loading="lazy" onerror="this.style.opacity='0';this.previousElementSibling.style.display='flex';"><div class="p-overlay"><span class="p-overlay-btn">View Project</span></div></div>
+                    <div class="p-info"><div class="p-name">Trendy Threads Store</div><p class="p-desc">Complete Shopify store for a clothing boutique.</p><div class="p-tags"><span class="p-tag gold-tag">E-Commerce</span><span class="p-tag">Shopify</span></div></div>
+                </div>
+                <div class="project-card card" data-url="https://dentalclinicdelhi.com/">
+                    <div class="p-thumb"><div class="p-thumb-fallback"><span class="p-fl">C</span></div><img src="image/dental.png" alt="Sharma Clinic" loading="lazy" onerror="this.style.opacity='0';this.previousElementSibling.style.display='flex';"><div class="p-overlay"><span class="p-overlay-btn">View Project</span></div></div>
+                    <div class="p-info"><div class="p-name">Smile delhi Dental Clinic</div><p class="p-desc">Appointment booking with service listings.</p><div class="p-tags"><span class="p-tag gold-tag">Business</span><span class="p-tag">Healthcare</span></div></div>
+                </div>
+                <div class="project-card card" data-url="https://www.juicesalons.com/">
+                    <div class="p-thumb"><div class="p-thumb-fallback"><span class="p-fl">G</span></div><img src="image/sallon.png" alt="Glam Studio" loading="lazy" onerror="this.style.opacity='0';this.previousElementSibling.style.display='flex';"><div class="p-overlay"><span class="p-overlay-btn">View Project</span></div></div>
+                    <div class="p-info"><div class="p-name">Juice Salons</div><p class="p-desc">Landing page with gallery & WhatsApp booking.</p><div class="p-tags"><span class="p-tag gold-tag">Landing Page</span><span class="p-tag">Salon</span></div></div>
+                </div>
+                <div class="project-card card" data-url="https://www.jkjjewellers.in/">
+                    <div class="p-thumb"><div class="p-thumb-fallback"><span class="p-fl">E</span></div><img src="image/jeweller.png" alt="Elara Jewels" loading="lazy" onerror="this.style.opacity='0';this.previousElementSibling.style.display='flex';"><div class="p-overlay"><span class="p-overlay-btn">View Project</span></div></div>
+                    <div class="p-info"><div class="p-name">JKJ Jewellers</div><p class="p-desc">Jewellery e-commerce with secure checkout.</p><div class="p-tags"><span class="p-tag gold-tag">E-Commerce</span><span class="p-tag">Featured</span></div></div>
+                </div>
+                <div class="project-card card" data-url="https://fitpass.co.in/">
+                    <div class="p-thumb"><div class="p-thumb-fallback"><span class="p-fl">F</span></div><img src="image/gym.png" alt="FitZone" loading="lazy" onerror="this.style.opacity='0';this.previousElementSibling.style.display='flex';"><div class="p-overlay"><span class="p-overlay-btn">View Project</span></div></div>
+                    <div class="p-info"><div class="p-name">Fitpass Gym</div><p class="p-desc">Landing page with schedules & membership sign-up.</p><div class="p-tags"><span class="p-tag gold-tag">Landing Page</span><span class="p-tag">Fitness</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <div class="section-inner">
+            <div class="reveal"><div class="section-label">Testimonials</div><h2 class="section-title">What Clients Say</h2><p class="section-subtitle">Honest feedback from businesses we've worked with.</p></div>
+            <div class="testimonials-grid reveal-stagger">
+                <div class="testimonial-card card"><div class="t-stars">★★★★★</div><p class="t-quote">DeployStacker built our restaurant website in 5 days. Online reservations tripled.</p><div class="t-author"><div class="t-avatar">R</div><div class="t-author-info"><div class="t-name">Rajesh Kumar</div><div class="t-role">Owner, Spice Route</div></div></div></div>
+                <div class="testimonial-card card"><div class="t-stars">★★★★★</div><p class="t-quote">Our Shopify store was set up flawlessly. Highly recommended.</p><div class="t-author"><div class="t-avatar">P</div><div class="t-author-info"><div class="t-name">Priya Sharma</div><div class="t-role">Founder, Trendy Threads</div></div></div></div>
+                <div class="testimonial-card card"><div class="t-stars">★★★★★</div><p class="t-quote">Patients book appointments online now. Clean, professional design.</p><div class="t-author"><div class="t-avatar">D</div><div class="t-author-info"><div class="t-name">Dr. Anil Sharma</div><div class="t-role">Sharma Dental Clinic</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section id="clients">
+        <div class="clients-row">
+            <span class="client-name">SPICE ROUTE</span>
+            <span class="client-name">TRENDY THREADS</span>
+            <span class="client-name">SHARMA CLINIC</span>
+            <span class="client-name">GLAM STUDIO</span>
+            <span class="client-name">ELARA JEWELS</span>
+            <span class="client-name">FITZONE</span>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team">
+        <div class="section-inner">
+            <div class="reveal"><div class="section-label">Who We Are</div><h2 class="section-title">Meet the Builders</h2><p class="section-subtitle">Three friends on a mission.</p></div>
+            <div class="team-grid reveal-stagger">
+                <div class="team-card card"><div class="tm-avatar"><img src="image/nakul.jpeg" alt="Nakul" loading="lazy"></div><div class="tm-info"><div class="tm-name">Nakul</div><div class="tm-role">Lead Developer</div></div></div>
+                <div class="team-card card"><div class="tm-avatar"><img src="image/mayank.jpeg" alt="Mayank" loading="lazy"></div><div class="tm-info"><div class="tm-name">Mayank</div><div class="tm-role">UI/UX Designer</div></div></div>
+                <div class="team-card card"><div class="tm-avatar"><img src="images/vansh.jpg" alt="Vansh" loading="lazy"></div><div class="tm-info"><div class="tm-name">Vansh</div><div class="tm-role">Frontend & Strategy</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+        <div class="section-inner">
+            <div class="reveal"><div class="section-label">How It Works</div><h2 class="section-title">Our Process</h2><p class="section-subtitle">Simple, transparent, effective.</p></div>
+            <div class="process-grid reveal-stagger">
+                <div class="process-step card"><div class="ps-num">01</div><div class="ps-icon">💬</div><div class="ps-name">Discovery Call</div><p class="ps-desc">We learn about your business and goals.</p><div class="ps-arrow-mob">↓</div></div>
+                <div class="process-step card"><div class="ps-num">02</div><div class="ps-icon">✏️</div><div class="ps-name">Design Concept</div><p class="ps-desc">Refined mockup in 48 hours.</p><div class="ps-arrow-mob">↓</div></div>
+                <div class="process-step card"><div class="ps-num">03</div><div class="ps-icon">⚙️</div><div class="ps-name">We Build It</div><p class="ps-desc">Mobile-first, SEO baked in.</p><div class="ps-arrow-mob">↓</div></div>
+                <div class="process-step card"><div class="ps-num">04</div><div class="ps-icon">🚀</div><div class="ps-name">Go Live</div><p class="ps-desc">Hosting, domain, seamless launch.</p><div class="ps-arrow-mob">↓</div></div>
+                <div class="process-step card"><div class="ps-num">05</div><div class="ps-icon">🛠️</div><div class="ps-name">Support</div><p class="ps-desc">We're here after launch. Always.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact-form">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Let's Build Something Great</h2>
+                <p class="section-subtitle">Fill out the form and we'll get back to you within 24 hours.</p>
+            </div>
+            <div class="form-card card reveal">
+                <form action="#" method="post" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="cta-final">
+        <div class="cta-final-content reveal">
+            <h2 class="cta-final-title">Ready to Get<br><span class="italic">Your Website?</span></h2>
+            <p class="cta-final-sub">Prefer to talk directly? We're available on WhatsApp or email.</p>
+            <div class="cta-final-actions">
+                <a href="https://wa.me/9996005270?text=Hello%20DeployStacker%2C%20I%27m%20interested%20in%20your%20web%20development%20services." class="btn-primary" target="_blank" rel="noopener">Chat on WhatsApp</a>
+                <a href="mailto:hello@deploystacker.in" class="btn-outline">Email Us</a>
+            </div>
+            <div class="cta-final-contact">
+                <span>hello@deploystacker.in</span>
+                <span>Response within 24h</span>
+                <span>India — Remote‑friendly</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Deploy<span>Stacker</span></div>
+        <div class="footer-copy">© 2025 DeployStacker. Built by Nakul, Mayank & Vansh.</div>
+        <div class="footer-links">
+            <a href="#home">Top</a>
+            <a href="#projects">Work</a>
+            <a href="#contact-form">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Custom cursor (only on devices that support hover)
+            const dot = document.getElementById('cursorDot');
+            const ring = document.getElementById('cursorRing');
+            if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                let mx = 0, my = 0, rx = 0, ry = 0;
+                document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+                function anim() {
+                    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+                    rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+                    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+                    requestAnimationFrame(anim);
+                }
+                anim();
+                const hoverTargets = document.querySelectorAll('a, button, .card, .project-card, .btn-primary, .btn-outline, .btn-submit');
+                hoverTargets.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        dot.style.width = '12px'; dot.style.height = '12px'; dot.style.background = '#fff';
+                        ring.style.width = '42px'; ring.style.height = '42px'; ring.style.borderColor = 'rgba(127,145,168,0.7)';
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        dot.style.width = '5px'; dot.style.height = '5px'; dot.style.background = '#7f91a8';
+                        ring.style.width = '28px'; ring.style.height = '28px'; ring.style.borderColor = 'rgba(127,145,168,0.4)';
+                    });
+                });
+            }
+
+            // Scroll reveal
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+            }, { rootMargin: '0px 0px -20px 0px', threshold: 0.05 });
+            document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+            // Project card click
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const url = this.getAttribute('data-url');
+                    if (url && url !== '#' && !url.includes('example.com')) window.open(url, '_blank', 'noopener');
+                });
+                const btn = card.querySelector('.p-overlay-btn');
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const url = card.getAttribute('data-url');
+                        if (url && url !== '#' && !url.includes('example.com')) window.open(url, '_blank', 'noopener');
+                    });
+                }
+            });
+
+            // Hero parallax
+            const heroRight = document.getElementById('heroRight');
+            const heroCard = document.getElementById('heroCard');
+            if (heroRight && heroCard) {
+                heroRight.addEventListener('mousemove', function(e) {
+                    const r = heroRight.getBoundingClientRect();
+                    const x = e.clientX - r.left, y = e.clientY - r.top;
+                    const mxP = (x - r.width/2) / (r.width/2), myP = (y - r.height/2) / (r.height/2);
+                    heroCard.style.transform = `translate(${mxP*6}px, ${myP*6}px) rotateX(${myP*2}deg) rotateY(${mxP*3}deg)`;
+                });
+                heroRight.addEventListener('mouseleave', () => { heroCard.style.transform = 'translate(0,0) rotateX(0deg) rotateY(0deg)'; });
+            }
+
+            // Smooth scroll for nav links
+            document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Contact form submission (prevent default for static site)
+            window.handleFormSubmit = function(event) {
+                event.preventDefault();
+                alert('Thank you for your message! We\'ll get back to you shortly. (This is a demo – no data is sent.)');
+            };
+        })();
+    </script>
+</body>
+</html>
