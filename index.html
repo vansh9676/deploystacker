@@ -1272,7 +1272,7 @@
                 <p class="section-subtitle">Fill out the form and we'll get back to you within 24 hours.</p>
             </div>
             <div class="form-card card reveal">
-                <form action="#" method="post" onsubmit="handleFormSubmit(event)">
+                <form action="https://formspree.io/f/xaqaklbv" method="post" onsubmit="handleFormSubmit(event)">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="John Doe" required>
@@ -1412,10 +1412,10 @@
             });
 
             // Contact form submission (prevent default for static site)
-            window.handleFormSubmit = function(event) {
-                event.preventDefault();
-                alert('Thank you for your message! We\'ll get back to you shortly. (This is a demo – no data is sent.)');
-            };
+            // window.handleFormSubmit = function(event) {
+            //     event.preventDefault();
+            //     alert('Thank you for your message! We\'ll get back to you shortly. (This is a demo – no data is sent.)');
+            // };
         })();
     </script>
 </body>
