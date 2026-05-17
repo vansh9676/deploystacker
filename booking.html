@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book a Free Call | DeployStacker</title>
+    <meta
+      name="description"
+      content="Book a free strategy call with DeployStacker. Share your project type, budget, and timeline for premium web development, AI automation, SEO, and design services in India."
+    />
+    <meta
+      name="keywords"
+      content="book web development consultation India, startup website development India, AI automation services India"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://deploystacker.in/booking.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Book a Free Call — DeployStacker" />
+    <meta
+      property="og:description"
+      content="Tell us your scope, timeline, and budget. We will map a premium execution strategy for your business."
+    />
+    <meta property="og:url" content="https://deploystacker.in/booking.html" />
+    <meta property="og:image" content="https://deploystacker.in/images/demo-business-website.webp" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Book a Free Call — DeployStacker" />
+    <meta name="twitter:description" content="Premium project consultation for web, AI, and SEO services." />
+    <meta name="twitter:image" content="https://deploystacker.in/images/demo-business-website.webp" />
+
+    <meta name="theme-color" content="#0b0f19" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="images/icon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <canvas class="particle-canvas" aria-hidden="true"></canvas>
+    <div class="mouse-glow" aria-hidden="true"></div>
+    <div class="page-top-progress" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="DeployStacker Home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>DeployStacker</span>
+        </a>
+
+        <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-menu" data-nav-menu>
+          <div class="nav-links">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="services.html">Services</a>
+            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            <div class="nav-cta">
+              <a class="btn btn-primary magnetic" href="booking.html">Book a Free Call</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section inner-hero">
+        <div class="container">
+          <p class="eyebrow">Project Discovery</p>
+          <h1 class="reveal-text">Book your premium strategy call with DeployStacker.</h1>
+          <p class="reveal">
+            Fill this quick multi-step form so our team can prepare a focused recommendation for your business goals.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container booking-layout">
+          <aside class="info-card reveal">
+            <h3>What happens after submission?</h3>
+            <ul class="detail-list">
+              <li>Step 1: We review your business scope and target outcomes.</li>
+              <li>Step 2: You receive a strategy response and execution direction.</li>
+              <li>Step 3: We align timeline, package, and launch roadmap.</li>
+            </ul>
+
+            <div class="kpi-grid" style="margin-top: 1rem">
+              <div class="kpi-item">
+                <p class="kpi-number">24h</p>
+                <p class="kpi-label">Response Window</p>
+              </div>
+              <div class="kpi-item">
+                <p class="kpi-number">100%</p>
+                <p class="kpi-label">Custom Strategy</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem" class="badges">
+              <span class="chip">Web Development</span>
+              <span class="chip">AI Automation</span>
+              <span class="chip">SEO</span>
+              <span class="chip">UI/UX</span>
+            </div>
+
+            <div class="form-actions" style="margin-top: 1rem">
+              <a class="btn btn-secondary magnetic" href="https://wa.me/919996005270?text=Hi%20DeployStacker%2C%20I%20want%20to%20discuss%20my%20project." target="_blank" rel="noopener">Chat on WhatsApp</a>
+            </div>
+          </aside>
+
+          <article class="form-card reveal">
+            <h3>Business Inquiry Form</h3>
+            <p style="margin-bottom: 0.9rem">Tell us what you want to build.</p>
+
+            <form id="bookingForm" class="multi-step-form">
+              <div class="step-indicator" aria-hidden="true">
+                <div class="step-pill"><span></span></div>
+                <div class="step-pill"><span></span></div>
+                <div class="step-pill"><span></span></div>
+              </div>
+
+              <section class="form-step active">
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required />
+                  </div>
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" type="tel" required />
+                  </div>
+                  <div class="field">
+                    <label for="businessType">Business Type</label>
+                    <input id="businessType" name="businessType" type="text" placeholder="Startup, Restaurant, Salon, SaaS..." required />
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button class="btn btn-primary magnetic" type="button" data-next-step>Continue</button>
+                </div>
+              </section>
+
+              <section class="form-step">
+                <div class="field">
+                  <label>Project Type</label>
+                  <div id="projectTypeOptions" class="project-type-options">
+                    <button class="option-chip" type="button" data-value="Business Website">Business Website</button>
+                    <button class="option-chip" type="button" data-value="E-Commerce">E-Commerce</button>
+                    <button class="option-chip" type="button" data-value="AI Automation">AI Automation</button>
+                    <button class="option-chip" type="button" data-value="SEO + Website">SEO + Website</button>
+                  </div>
+                  <input id="projectTypeHidden" name="projectType" type="hidden" required />
+                </div>
+
+                <div class="field" style="margin-top: 0.9rem">
+                  <label>Budget</label>
+                  <div id="budgetOptions" class="budget-options">
+                    <button class="option-chip" type="button" data-value="₹25k - ₹50k">₹25k - ₹50k</button>
+                    <button class="option-chip" type="button" data-value="₹50k - ₹1L">₹50k - ₹1L</button>
+                    <button class="option-chip" type="button" data-value="₹1L - ₹2L">₹1L - ₹2L</button>
+                    <button class="option-chip" type="button" data-value="₹2L+">₹2L+</button>
+                  </div>
+                  <input id="budgetHidden" name="budget" type="hidden" required />
+                </div>
+
+                <div class="field" style="margin-top: 0.9rem">
+                  <label for="timeline">Timeline</label>
+                  <select id="timeline" name="timeline" required>
+                    <option value="">Select timeline</option>
+                    <option value="ASAP (1-2 weeks)">ASAP (1-2 weeks)</option>
+                    <option value="This month">This month</option>
+                    <option value="1-2 months">1-2 months</option>
+                    <option value="Flexible">Flexible</option>
+                  </select>
+                </div>
+
+                <div class="form-actions">
+                  <button class="btn btn-secondary" type="button" data-prev-step>Back</button>
+                  <button class="btn btn-primary magnetic" type="button" data-next-step>Continue</button>
+                </div>
+              </section>
+
+              <section class="form-step">
+                <div class="field">
+                  <label for="details">Project Details</label>
+                  <textarea id="details" name="details" placeholder="Tell us about your goals, target audience, and required features..." required></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button class="btn btn-secondary" type="button" data-prev-step>Back</button>
+                  <button class="btn btn-primary magnetic" type="submit">Submit Inquiry</button>
+                </div>
+              </section>
+            </form>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark"></span><span>DeployStacker</span></a>
+          <p style="margin-top: 0.7rem">Modern Web & AI Solutions Built for Growth.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <div class="footer-links">
+            <a href="services.html">Services</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <div class="footer-links">
+            <a href="mailto:deploystacker@gmail.com">deploystacker@gmail.com</a>
+            <a href="tel:+919996005270">+91 9996005270</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms</a>
+          </div>
+          <p style="margin-top: 0.8rem; font-size: 0.85rem">© <span data-year></span> DeployStacker.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="sticky-cta"><a class="floating-btn magnetic" href="booking.html"><strong>Book</strong> <span>Free Call</span></a></div>
+    <div class="whatsapp-float">
+      <a class="floating-btn magnetic" href="https://wa.me/919996005270?text=Hi%20DeployStacker%2C%20I%20want%20to%20book%20a%20project%20call." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
+    <div id="bookingSuccessPopup" class="success-popup" aria-hidden="true">
+      <div class="success-content">
+        <h3 class="gradient-text">Inquiry Submitted Successfully</h3>
+        <p style="margin-top: 0.6rem">
+          Your project brief is ready. Send it on WhatsApp to instantly notify our team.
+        </p>
+        <div class="form-actions" style="margin-top: 1rem">
+          <button id="sendWhatsappLead" class="btn btn-primary magnetic" type="button">Send on WhatsApp</button>
+          <button id="closeBookingPopup" class="btn btn-secondary" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>

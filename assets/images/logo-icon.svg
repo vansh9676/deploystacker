@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" fill="none">
+
+  <!--
+    DeployStacker Icon — Isometric 3-layer stack
+    
+    Strategy: use skewX + skewY transforms on rounded rectangles
+    to create proper isometric faces with rounded corners.
+    
+    The blue top face is a rounded-corner rhombus (rotated 45deg square).
+    We simulate this with a rotated rounded-rect.
+  -->
+
+  <!-- ══════════════════════════════════════════
+       BLACK BASE LAYER
+       ══════════════════════════════════════════ -->
+  <!-- Top face of black layer -->
+  <g transform="translate(100,118) rotate(0)">
+    <g transform="skewX(-30) scale(1, 0.5774)">
+      <rect x="-52" y="-52" width="104" height="104" rx="10" fill="#1a1a1a" transform="rotate(45)"/>
+    </g>
+  </g>
+  <!-- Left side of black layer -->
+  <polygon points="27,118  27,136  100,154  100,136" fill="#111111"/>
+  <!-- Right side of black layer -->
+  <polygon points="173,118  173,136  100,154  100,136" fill="#161616"/>
+
+  <!-- ══════════════════════════════════════════
+       WHITE MIDDLE LAYER
+       ══════════════════════════════════════════ -->
+  <!-- Top face of white layer -->
+  <g transform="translate(100,100)">
+    <g transform="skewX(-30) scale(1, 0.5774)">
+      <rect x="-52" y="-52" width="104" height="104" rx="10" fill="#f0f0f0" transform="rotate(45)"/>
+    </g>
+  </g>
+  <!-- Left side of white layer -->
+  <polygon points="27,100  27,118  100,136  100,118" fill="#cccccc"/>
+  <!-- Right side of white layer -->
+  <polygon points="173,100  173,118  100,136  100,118" fill="#d8d8d8"/>
+
+  <!-- ══════════════════════════════════════════
+       BLUE TOP LAYER
+       ══════════════════════════════════════════ -->
+  <!-- Top face of blue layer — rounded diamond -->
+  <g transform="translate(100,82)">
+    <g transform="skewX(-30) scale(1, 0.5774)">
+      <rect x="-52" y="-52" width="104" height="104" rx="12" fill="#2563EB" transform="rotate(45)"/>
+    </g>
+  </g>
+  <!-- Left side of blue layer -->
+  <polygon points="27,82  27,100  100,118  100,100" fill="#1d4ed8"/>
+  <!-- Right side of blue layer -->
+  <polygon points="173,82  173,100  100,118  100,100" fill="#3b82f6"/>
+
+  <!-- ══════════════════════════════════════════
+       </> TEXT on blue top face
+       Center of blue top face ≈ (100, 82)
+       ══════════════════════════════════════════ -->
+  <text
+    x="100" y="86"
+    font-family="'Courier New', Courier, monospace"
+    font-size="28"
+    font-weight="900"
+    fill="white"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    letter-spacing="2">&lt;/&gt;</text>
+
+  <!-- ══════════════════════════════════════════
+       ARROW ↗ at top-right of blue face
+       Right corner of blue face ≈ (173, 82)
+       ══════════════════════════════════════════ -->
+  <g transform="translate(158, 38)"
+     stroke="white" stroke-width="5.5"
+     stroke-linecap="round" stroke-linejoin="round"
+     fill="none">
+    <line x1="2" y1="24" x2="24" y2="2"/>
+    <polyline points="8,2 24,2 24,18"/>
+  </g>
+
+</svg>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — DeployStacker</title>
+  <meta name="description" content="Explore DeployStacker's full range of services: Web Development, AI Automation, UI/UX Design, SEO, SaaS, and E-Commerce.">
+  <link rel="icon" href="assets/images/icon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="assets/images/icon.svg">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .service-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .service-detail:last-child { border-bottom: none; }
+    .service-detail.reverse { direction: rtl; }
+    .service-detail.reverse > * { direction: ltr; }
+    .service-detail-image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--color-background);
+    }
+    .service-detail-image img { width:100%; height:100%; object-fit:cover; }
+    .service-detail-content {}
+    .service-detail-list {
+      display: flex; flex-direction: column; gap: 10px;
+      margin: 1.5rem 0 2rem;
+    }
+    .service-detail-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: var(--fs-sm); color: var(--color-text);
+    }
+    .service-detail-list li i { color: var(--color-accent); font-size: 0.75rem; }
+    @media (max-width: 768px) {
+      .service-detail { grid-template-columns: 1fr; gap: 2rem; }
+      .service-detail.reverse { direction: ltr; }
+    }
+  </style>
+  <link rel="canonical" href="https://deploystacker.in/services.html">
+  <meta property="og:url" content="https://deploystacker.in/services.html">
+  <meta property="og:site_name" content="DeployStacker">
+</head>
+<body>
+<script src="assets/js/components.js"></script>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="breadcrumb fade-up">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Services</span>
+      </div>
+      <h1 class="fade-up delay-1">Our <span style="color:var(--color-accent)">Services</span></h1>
+    </div>
+  </div>
+</section>
+
+<!-- Services Overview -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label fade-up">What We Offer</div>
+      <h2 class="section-title fade-up delay-1">Complete digital services for <span>growing your brand</span></h2>
+      <p class="section-desc mx-auto fade-up delay-2">From concept to deployment, we handle every aspect of your digital presence with precision, creativity, and technical excellence.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up delay-1">
+        <span class="service-card-num">01</span>
+        <div class="service-card-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>Web Development</h3>
+        <p>Modern, responsive websites built with the latest technologies. Fast, secure, and optimized for conversions and search engines.</p>
+        <a href="#web-dev" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-2">
+        <span class="service-card-num">02</span>
+        <div class="service-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Full Stack Development</h3>
+        <p>End-to-end development from database architecture to polished frontend interfaces that scale with your business.</p>
+        <a href="#fullstack" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-3">
+        <span class="service-card-num">03</span>
+        <div class="service-card-icon"><i class="fa-solid fa-robot"></i></div>
+        <h3>AI Automation</h3>
+        <p>Intelligent automation solutions that streamline workflows, reduce manual effort, and unlock new business efficiencies.</p>
+        <a href="#ai" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-1">
+        <span class="service-card-num">04</span>
+        <div class="service-card-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+        <h3>UI/UX Design</h3>
+        <p>Beautiful, intuitive interfaces designed with user psychology in mind. Every pixel crafted with purpose and precision.</p>
+        <a href="#uiux" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-2">
+        <span class="service-card-num">05</span>
+        <div class="service-card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3>SEO Optimization</h3>
+        <p>Data-driven SEO strategies that improve your search rankings and drive qualified organic traffic to your website.</p>
+        <a href="#seo" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-3">
+        <span class="service-card-num">06</span>
+        <div class="service-card-icon"><i class="fa-solid fa-cloud"></i></div>
+        <h3>SaaS Development</h3>
+        <p>Scalable SaaS platforms with multi-tenant architecture, subscription billing, and powerful admin dashboards.</p>
+        <a href="#saas" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-1">
+        <span class="service-card-num">07</span>
+        <div class="service-card-icon"><i class="fa-solid fa-building"></i></div>
+        <h3>Business Websites</h3>
+        <p>Professional business websites that establish credibility, showcase your services, and generate leads 24/7.</p>
+        <a href="#web-dev" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-2">
+        <span class="service-card-num">08</span>
+        <div class="service-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <h3>Agency Websites</h3>
+        <p>Stunning agency websites that showcase your portfolio, attract premium clients, and reflect your brand identity.</p>
+        <a href="#web-dev" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up delay-3">
+        <span class="service-card-num">09</span>
+        <div class="service-card-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+        <h3>E-Commerce Development</h3>
+        <p>High-converting online stores with seamless checkout, inventory management, and payment gateway integrations.</p>
+        <a href="#ecommerce" class="service-card-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service Details -->
+<section class="section section-bg">
+  <div class="container">
+
+    <div class="service-detail" id="web-dev">
+      <div class="service-detail-image fade-up">
+        <img src="assets/images/service-web.jpg" alt="Web Development" loading="lazy">
+      </div>
+      <div class="service-detail-content fade-up delay-2">
+        <div class="section-label">Web Development</div>
+        <h2 class="section-title">Modern websites built for <span>performance</span></h2>
+        <p>We build fast, secure, and beautiful websites that represent your brand and convert visitors into customers. Every site is mobile-first, SEO-ready, and built to last.</p>
+        <ul class="service-detail-list">
+          <li><i class="fa-solid fa-check"></i> Custom design tailored to your brand</li>
+          <li><i class="fa-solid fa-check"></i> Mobile-first responsive layouts</li>
+          <li><i class="fa-solid fa-check"></i> Core Web Vitals optimized</li>
+          <li><i class="fa-solid fa-check"></i> CMS integration (WordPress, Sanity, etc.)</li>
+          <li><i class="fa-solid fa-check"></i> SSL, security hardening &amp; backups</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Get a Quote <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span></a>
+      </div>
+    </div>
+
+    <div class="service-detail reverse" id="ai">
+      <div class="service-detail-image fade-up">
+        <img src="assets/images/service-ai.jpg" alt="AI Automation" loading="lazy">
+      </div>
+      <div class="service-detail-content fade-up delay-2">
+        <div class="section-label">AI Automation</div>
+        <h2 class="section-title">Automate your business with <span>intelligent AI</span></h2>
+        <p>We build custom AI automation solutions that eliminate repetitive tasks, improve decision-making, and unlock new efficiencies across your entire business operation.</p>
+        <ul class="service-detail-list">
+          <li><i class="fa-solid fa-check"></i> AI chatbots &amp; virtual assistants</li>
+          <li><i class="fa-solid fa-check"></i> Workflow automation with LangChain / n8n</li>
+          <li><i class="fa-solid fa-check"></i> Data extraction &amp; processing pipelines</li>
+          <li><i class="fa-solid fa-check"></i> OpenAI / GPT-4 integrations</li>
+          <li><i class="fa-solid fa-check"></i> Custom AI dashboards &amp; reporting</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Get a Quote <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span></a>
+      </div>
+    </div>
+
+    <div class="service-detail" id="ecommerce">
+      <div class="service-detail-image fade-up">
+        <img src="assets/images/service-ecommerce.jpg" alt="E-Commerce Development" loading="lazy">
+      </div>
+      <div class="service-detail-content fade-up delay-2">
+        <div class="section-label">E-Commerce</div>
+        <h2 class="section-title">Online stores that <span>convert &amp; scale</span></h2>
+        <p>We build high-converting e-commerce platforms with seamless shopping experiences, powerful admin tools, and integrations with all major payment gateways.</p>
+        <ul class="service-detail-list">
+          <li><i class="fa-solid fa-check"></i> Custom storefront design</li>
+          <li><i class="fa-solid fa-check"></i> Stripe, Razorpay, PayPal integration</li>
+          <li><i class="fa-solid fa-check"></i> Inventory &amp; order management</li>
+          <li><i class="fa-solid fa-check"></i> Product search &amp; filtering</li>
+          <li><i class="fa-solid fa-check"></i> Analytics &amp; conversion tracking</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Get a Quote <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-content fade-up">
+        <h2>Not sure which service <span>you need?</span></h2>
+        <p>Let's have a free consultation call. We'll help you figure out the best solution for your business.</p>
+      </div>
+      <div class="cta-actions fade-up delay-2">
+        <a href="contact.html" class="btn btn-primary">Book Free Consultation <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span></a>
+        <a href="pricing.html" class="btn btn-outline-white">View Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/placeholders.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

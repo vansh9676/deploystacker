@@ -1,0 +1,68 @@
+/* ============================================
+   DeployStacker — CSS Variables
+   Premium Luxury Web Agency Theme
+   ============================================ */
+:root {
+  --color-primary:       #161616;
+  --color-secondary:     #ffffff;
+  --color-accent:        #EF4823;
+  --color-accent-hover:  #d63d1a;
+  --color-text:          #666666;
+  --color-text-dark:     #161616;
+  --color-text-light:    #999999;
+  --color-background:    #F5F3EF;
+  --color-white:         #ffffff;
+  --color-black:         #000000;
+  --color-divider:       rgba(22,22,22,0.10);
+  --color-dark-divider:  rgba(255,255,255,0.10);
+  --color-dark-bg:       #0f0f0f;
+  --color-dark-card:     #1a1a1a;
+  --color-dark-border:   rgba(255,255,255,0.08);
+
+  --font-primary: 'Cal Sans', 'Inter', sans-serif;
+
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-md:   1.125rem;
+  --fs-lg:   1.25rem;
+  --fs-xl:   1.5rem;
+  --fs-2xl:  2rem;
+  --fs-3xl:  2.5rem;
+  --fs-4xl:  3rem;
+  --fs-5xl:  3.75rem;
+  --fs-hero: clamp(2.4rem, 5.5vw, 4.8rem);
+
+  --space-xs:      0.5rem;
+  --space-sm:      1rem;
+  --space-md:      1.5rem;
+  --space-lg:      2rem;
+  --space-xl:      3rem;
+  --space-2xl:     4rem;
+  --space-3xl:     6rem;
+  --space-section: clamp(4rem, 8vw, 8rem);
+
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
+  --radius-full: 9999px;
+
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:     0 8px 30px rgba(0,0,0,0.10);
+  --shadow-lg:     0 20px 60px rgba(0,0,0,0.15);
+  --shadow-accent: 0 8px 30px rgba(239,72,35,0.28);
+
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --transition-slow: 0.6s cubic-bezier(0.4,0,0.2,1);
+
+  --glass-bg:     rgba(255,255,255,0.07);
+  --glass-border: rgba(255,255,255,0.14);
+  --glass-blur:   blur(20px);
+
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+}

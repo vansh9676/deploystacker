@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — DeployStacker</title>
+  <meta name="description" content="Smart reads on web development, AI automation, SEO, and digital growth from the DeployStacker team.">
+  <link rel="icon" href="assets/images/icon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="assets/images/icon.svg">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .blog-hero-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-divider);
+      margin-bottom: 3rem;
+      transition: var(--transition-base);
+    }
+    .blog-hero-card:hover { box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
+    .blog-hero-card-image { aspect-ratio: 16/10; overflow: hidden; }
+    .blog-hero-card-image img { width:100%; height:100%; object-fit:cover; transition: transform 0.6s ease; }
+    .blog-hero-card:hover .blog-hero-card-image img { transform: scale(1.04); }
+    .blog-hero-card-body { padding: 2.5rem 2.5rem 2.5rem 0; }
+    .blog-categories {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .blog-cat-btn {
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: var(--fs-xs);
+      border: 1.5px solid var(--color-divider);
+      background: transparent;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .blog-cat-btn:hover, .blog-cat-btn.active {
+      background: var(--color-accent); color: white; border-color: var(--color-accent);
+    }
+    @media (max-width: 768px) {
+      .blog-hero-card { grid-template-columns: 1fr; }
+      .blog-hero-card-body { padding: 1.5rem; }
+    }
+  </style>
+  <link rel="canonical" href="https://deploystacker.in/blog.html">
+  <meta property="og:url" content="https://deploystacker.in/blog.html">
+  <meta property="og:site_name" content="DeployStacker">
+</head>
+<body>
+<script src="assets/js/components.js"></script>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="breadcrumb fade-up">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Blog</span>
+      </div>
+      <h1 class="fade-up delay-1">Our <span style="color:var(--color-accent)">Blog</span></h1>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label fade-up">Insights &amp; Ideas</div>
+      <h2 class="section-title fade-up delay-1">Smart reads for <span>digital growth</span></h2>
+      <p class="section-desc mx-auto fade-up delay-2">Practical insights on web development, AI, design, and growing your digital business.</p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="blog-categories fade-up">
+      <button class="blog-cat-btn active">All</button>
+      <button class="blog-cat-btn">Web Dev</button>
+      <button class="blog-cat-btn">AI</button>
+      <button class="blog-cat-btn">Design</button>
+      <button class="blog-cat-btn">SEO</button>
+      <button class="blog-cat-btn">Business</button>
+    </div>
+
+    <!-- Featured Post -->
+    <div class="blog-hero-card fade-up">
+      <div class="blog-hero-card-image">
+        <img src="assets/images/blog-1.jpg" alt="Web Development Trends 2026" loading="lazy">
+      </div>
+      <div class="blog-hero-card-body">
+        <div class="blog-card-meta" style="margin-bottom:1rem;">
+          <span class="blog-card-tag">Web Dev</span>
+          <span class="blog-card-date">May 10, 2026</span>
+        </div>
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem); margin-bottom:1rem; line-height:1.25;">Top Web Development Trends to Watch in 2026</h2>
+        <p style="font-size:var(--fs-sm); color:var(--color-text); line-height:1.75; margin-bottom:1.5rem;">From AI-generated interfaces to edge computing and WebAssembly, here are the trends reshaping how we build for the web in 2026 and beyond.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div class="blog-author">
+            <div class="blog-author-avatar">D</div>
+            <span class="blog-author-name">DeployStacker Team · 8 min read</span>
+          </div>
+          <a href="#" class="btn btn-primary" style="padding:10px 24px;">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid">
+      <div class="blog-card fade-up delay-1">
+        <div class="blog-card-image">
+          <img src="assets/images/blog-2.jpg" alt="AI Automation Guide" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">AI</span>
+            <span class="blog-card-date">Apr 28, 2026</span>
+          </div>
+          <h3>How AI Automation Can Save Your Business 20+ Hours Per Week</h3>
+          <p>A practical guide to identifying automation opportunities and implementing AI workflows in your business operations.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author">
+              <div class="blog-author-avatar">D</div>
+              <span class="blog-author-name">DeployStacker · 6 min</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card fade-up delay-2">
+        <div class="blog-card-image">
+          <img src="assets/images/blog-3.jpg" alt="SEO Guide 2026" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">SEO</span>
+            <span class="blog-card-date">Apr 15, 2026</span>
+          </div>
+          <h3>The Complete SEO Guide for Business Websites in 2026</h3>
+          <p>Everything you need to know about ranking higher on Google and driving qualified organic traffic to your site.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author">
+              <div class="blog-author-avatar">D</div>
+              <span class="blog-author-name">DeployStacker · 10 min</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card fade-up delay-3">
+        <div class="blog-card-image">
+          <img src="assets/images/blog-1.jpg" alt="UI/UX Design Principles" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Design</span>
+            <span class="blog-card-date">Apr 5, 2026</span>
+          </div>
+          <h3>10 UI/UX Design Principles That Increase Conversions</h3>
+          <p>The design decisions that separate high-converting websites from average ones — backed by data and real-world testing.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author">
+              <div class="blog-author-avatar">D</div>
+              <span class="blog-author-name">DeployStacker · 7 min</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card fade-up delay-1">
+        <div class="blog-card-image">
+          <img src="assets/images/blog-2.jpg" alt="SaaS Development Guide" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Web Dev</span>
+            <span class="blog-card-date">Mar 22, 2026</span>
+          </div>
+          <h3>How to Build a SaaS Product from Scratch in 2026</h3>
+          <p>A step-by-step guide to planning, designing, and launching a successful SaaS product — from idea to first paying customer.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author">
+              <div class="blog-author-avatar">D</div>
+              <span class="blog-author-name">DeployStacker · 12 min</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card fade-up delay-2">
+        <div class="blog-card-image">
+          <img src="assets/images/blog-3.jpg" alt="E-Commerce Optimization" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Business</span>
+            <span class="blog-card-date">Mar 10, 2026</span>
+          </div>
+          <h3>5 Ways to Increase Your E-Commerce Conversion Rate</h3>
+          <p>Proven strategies to turn more visitors into buyers — from checkout optimization to trust signals and page speed.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author">
+              <div class="blog-author-avatar">D</div>
+              <span class="blog-author-name">DeployStacker · 5 min</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card fade-up delay-3">
+        <div class="blog-card-image">
+          <img src="assets/images/blog-1.jpg" alt="Next.js vs React" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Web Dev</span>
+            <span class="blog-card-date">Feb 28, 2026</span>
+          </div>
+          <h3>Next.js vs React: Which Should You Choose in 2026?</h3>
+          <p>A clear breakdown of when to use Next.js vs plain React for your next web project, with real-world examples.</p>
+          <div class="blog-card-footer">
+            <div class="blog-author">
+              <div class="blog-author-avatar">D</div>
+              <span class="blog-author-name">DeployStacker · 8 min</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter CTA -->
+<section class="section section-bg">
+  <div class="container">
+    <div style="background:var(--color-primary); border-radius:var(--radius-xl); padding:4rem; text-align:center; position:relative; overflow:hidden;" class="fade-up">
+      <div style="position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(239,72,35,0.15) 0%,transparent 70%);pointer-events:none;"></div>
+      <div class="section-label" style="justify-content:center; color:rgba(255,255,255,0.5);">Newsletter</div>
+      <h2 style="color:white; margin-bottom:0.75rem;">Stay ahead of the <span style="color:var(--color-accent)">curve</span></h2>
+      <p style="color:rgba(255,255,255,0.55); max-width:480px; margin:0 auto 2rem;">Get our latest articles on web development, AI, and digital growth delivered straight to your inbox. No spam, ever.</p>
+      <form style="display:flex; gap:12px; max-width:480px; margin:0 auto; flex-wrap:wrap;" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email address" style="flex:1; min-width:200px; padding:14px 20px; border-radius:var(--radius-full); border:1.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.08); color:white; font-size:var(--fs-sm); outline:none;">
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/placeholders.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

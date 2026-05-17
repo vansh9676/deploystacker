@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2027"/>
+      <stop offset="100%" stop-color="#203a43"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <text x="400" y="255" font-size="90" text-anchor="middle" dominant-baseline="middle">🤖</text>
+  <text x="400" y="340" font-family="Inter,sans-serif" font-size="24" fill="rgba(255,255,255,0.75)" text-anchor="middle" font-weight="500">AI Automation</text>
+  <text x="400" y="378" font-family="Inter,sans-serif" font-size="15" fill="rgba(255,255,255,0.35)" text-anchor="middle">DeployStacker</text>
+</svg>

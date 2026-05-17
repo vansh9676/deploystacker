@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — DeployStacker</title>
+  <meta name="description" content="Transparent, affordable pricing plans for web development, AI automation, and digital services from DeployStacker.">
+  <link rel="icon" href="assets/images/icon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="assets/images/icon.svg">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .pricing-toggle-wrap {
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .pricing-toggle-label { font-size: var(--fs-sm); color: var(--color-text); }
+    .pricing-toggle {
+      position: relative; width: 52px; height: 28px;
+      background: var(--color-divider); border-radius: 14px;
+      cursor: pointer; transition: var(--transition-fast);
+    }
+    .pricing-toggle.active { background: var(--color-accent); }
+    .pricing-toggle::after {
+      content: ''; position: absolute;
+      top: 3px; left: 3px;
+      width: 22px; height: 22px;
+      background: white; border-radius: 50%;
+      transition: var(--transition-fast);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .pricing-toggle.active::after { left: 27px; }
+    .pricing-save-badge {
+      background: rgba(239,72,35,0.1);
+      color: var(--color-accent);
+      font-size: var(--fs-xs);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+    }
+    .compare-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-divider);
+      margin-top: 4rem;
+    }
+    .compare-table th {
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      background: var(--color-background);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .compare-table th:first-child { width: 40%; }
+    .compare-table td {
+      padding: 1rem 1.5rem;
+      font-size: var(--fs-sm);
+      color: var(--color-text);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table .check { color: var(--color-accent); font-size: 1rem; }
+    .compare-table .cross { color: #ccc; font-size: 1rem; }
+    .compare-table .featured-col { background: rgba(239,72,35,0.03); }
+  </style>
+  <link rel="canonical" href="https://deploystacker.in/pricing.html">
+  <meta property="og:url" content="https://deploystacker.in/pricing.html">
+  <meta property="og:site_name" content="DeployStacker">
+</head>
+<body>
+<script src="assets/js/components.js"></script>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="breadcrumb fade-up">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Pricing</span>
+      </div>
+      <h1 class="fade-up delay-1">Pricing <span style="color:var(--color-accent)">Plans</span></h1>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label fade-up">Transparent Pricing</div>
+      <h2 class="section-title fade-up delay-1">Affordable plans designed for <span>your growth</span></h2>
+      <p class="section-desc mx-auto fade-up delay-2">No hidden fees. No surprises. Choose the plan that fits your business and scale as you grow.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up delay-1">
+        <div class="pricing-plan-name">Starter</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">24,999</span>
+        </div>
+        <div class="pricing-period">One-time · Ideal for small businesses</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><span class="check-icon">✓</span> Business Website (up to 5 pages)</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Mobile Responsive Design</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Basic SEO Setup</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Contact Form Integration</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Google Analytics Setup</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> 30-Day Post-Launch Support</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline w-100" style="justify-content:center; margin-top:auto;">Get Started</a>
+      </div>
+
+      <div class="pricing-card featured fade-up delay-2">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-plan-name">Professional</div>
+        <div class="pricing-price">
+          <span class="pricing-currency" style="color:white;">₹</span>
+          <span class="pricing-amount">59,999</span>
+        </div>
+        <div class="pricing-period">One-time · Ideal for growing businesses</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><span class="check-icon">✓</span> Full Stack Web Application</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Custom UI/UX Design</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> CMS Integration</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Advanced SEO Optimization</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Payment Gateway Integration</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Admin Dashboard</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> 90-Day Support &amp; Maintenance</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary w-100" style="justify-content:center; margin-top:auto;">Get Started</a>
+      </div>
+
+      <div class="pricing-card fade-up delay-3">
+        <div class="pricing-plan-name">Enterprise</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">₹</span>
+          <span class="pricing-amount">1,49,999</span>
+        </div>
+        <div class="pricing-period">One-time · Ideal for large-scale platforms</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><span class="check-icon">✓</span> SaaS / Complex Web Platform</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> AI Automation Integration</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Custom Admin Dashboard</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Multi-role Authentication</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> REST / GraphQL API Development</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> Cloud Deployment (AWS/GCP)</li>
+          <li class="pricing-feature"><span class="check-icon">✓</span> 1-Year Support &amp; Maintenance</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline w-100" style="justify-content:center; margin-top:auto;">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="fade-up" style="margin-top:5rem;">
+      <h3 style="text-align:center; margin-bottom:0.5rem;">Compare Plans</h3>
+      <p style="text-align:center; color:var(--color-text); margin-bottom:2rem; font-size:var(--fs-sm);">See exactly what's included in each plan.</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Starter</th>
+            <th class="featured-col" style="color:var(--color-accent);">Professional</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Custom Design</td>
+            <td><span class="check">✓</span></td>
+            <td class="featured-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Mobile Responsive</td>
+            <td><span class="check">✓</span></td>
+            <td class="featured-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>CMS Integration</td>
+            <td><span class="cross">—</span></td>
+            <td class="featured-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Payment Gateway</td>
+            <td><span class="cross">—</span></td>
+            <td class="featured-col"><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>AI Automation</td>
+            <td><span class="cross">—</span></td>
+            <td class="featured-col"><span class="cross">—</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>API Development</td>
+            <td><span class="cross">—</span></td>
+            <td class="featured-col"><span class="cross">—</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Support Duration</td>
+            <td>30 Days</td>
+            <td class="featured-col">90 Days</td>
+            <td>1 Year</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-bg">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label fade-up">Pricing FAQs</div>
+      <h2 class="section-title fade-up delay-1">Common <span>pricing questions</span></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item fade-up delay-1">
+        <div class="faq-question"><h4>Are there any hidden fees?</h4><span class="faq-toggle">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner">No hidden fees ever. The price you see is the price you pay. Any additional scope changes are discussed and agreed upon before work begins.</div></div>
+      </div>
+      <div class="faq-item fade-up delay-2">
+        <div class="faq-question"><h4>What is the payment structure?</h4><span class="faq-toggle">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner">We work with a 50% upfront deposit and 50% on project completion. For larger enterprise projects, we can arrange milestone-based payment schedules.</div></div>
+      </div>
+      <div class="faq-item fade-up delay-1">
+        <div class="faq-question"><h4>Can I upgrade my plan later?</h4><span class="faq-toggle">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. You can start with a Starter plan and upgrade to Professional or Enterprise as your business grows. We'll handle the transition seamlessly.</div></div>
+      </div>
+      <div class="faq-item fade-up delay-2">
+        <div class="faq-question"><h4>Do you offer custom quotes?</h4><span class="faq-toggle">+</span></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. If your project doesn't fit neatly into one of our plans, we're happy to provide a custom quote tailored to your specific requirements.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-content fade-up">
+        <h2>Not sure which plan is <span>right for you?</span></h2>
+        <p>Book a free 30-minute consultation and we'll help you choose the best option for your business.</p>
+      </div>
+      <div class="cta-actions fade-up delay-2">
+        <a href="contact.html" class="btn btn-primary">Book Free Call <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span></a>
+        <a href="services.html" class="btn btn-outline-white">View Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/placeholders.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

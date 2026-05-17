@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials — DeployStacker</title>
+  <meta name="description" content="Read what our clients say about working with DeployStacker — real reviews from real businesses.">
+  <link rel="icon" href="assets/images/icon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="assets/images/icon.svg">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .testimonials-full-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card-full {
+      background: var(--color-white);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      transition: var(--transition-base);
+    }
+    .testimonial-card-full:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .testimonial-card-full .testimonial-stars { color: #f5a623; margin-bottom: 1rem; }
+    .testimonial-card-full .testimonial-text {
+      font-size: var(--fs-sm); color: var(--color-text);
+      line-height: 1.75; margin-bottom: 1.5rem; font-style: italic;
+    }
+    .testimonial-card-full .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-card-full .testimonial-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--color-accent); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--fs-base); font-weight: 600; flex-shrink: 0;
+    }
+    .testimonial-card-full .testimonial-author-info h4 { font-size: var(--fs-sm); margin-bottom: 2px; }
+    .testimonial-card-full .testimonial-author-info span { font-size: var(--fs-xs); color: var(--color-text-light); }
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .platform-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: var(--transition-base);
+    }
+    .platform-card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .platform-card .platform-logo { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .platform-card h4 { font-size: var(--fs-base); margin-bottom: 0.25rem; }
+    .platform-card .platform-stars { color: #f5a623; font-size: 0.8rem; margin-bottom: 0.25rem; }
+    .platform-card .platform-count { font-size: var(--fs-xs); color: var(--color-text-light); }
+    @media (max-width: 900px) {
+      .testimonials-full-grid { grid-template-columns: repeat(2, 1fr); }
+      .platforms-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .testimonials-full-grid { grid-template-columns: 1fr; }
+      .platforms-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+  <link rel="canonical" href="https://deploystacker.in/testimonials.html">
+  <meta property="og:url" content="https://deploystacker.in/testimonials.html">
+  <meta property="og:site_name" content="DeployStacker">
+</head>
+<body>
+<script src="assets/js/components.js"></script>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="breadcrumb fade-up">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Testimonials</span>
+      </div>
+      <h1 class="fade-up delay-1">Client <span style="color:var(--color-accent)">Reviews</span></h1>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Grid -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label fade-up">What Clients Say</div>
+      <h2 class="section-title fade-up delay-1">Real reviews from <span>real businesses</span></h2>
+      <p class="section-desc mx-auto fade-up delay-2">Don't just take our word for it. Here's what our clients have to say about working with DeployStacker.</p>
+    </div>
+
+    <div class="testimonials-full-grid">
+      <div class="testimonial-card-full fade-up delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"DeployStacker transformed our online presence completely. The website they built is fast, beautiful, and has significantly increased our lead generation. Highly recommended!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div class="testimonial-author-info"><h4>Anita Patel</h4><span>Owner, Patel Enterprises</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The AI automation they built for our workflow saved us 20+ hours per week. Exceptional technical expertise and communication throughout the entire project."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">P</div>
+          <div class="testimonial-author-info"><h4>Pooja Mehta</h4><span>Co-Founder, GreenLeaf Store</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Working with DeployStacker was a seamless experience. They understood our requirements clearly and delivered a modern, fast website ahead of schedule."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">P</div>
+          <div class="testimonial-author-info"><h4>Priya Sharma</h4><span>Marketing Manager, UrbanCart</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Our SaaS platform was built with incredible attention to detail. The team handled everything from architecture to UI and the result exceeded our expectations."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div class="testimonial-author-info"><h4>Daniel Foster</h4><span>CEO, GlobalVision Inc.</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The e-commerce store they built has a 40% higher conversion rate than our old site. The UX is intuitive and the performance is outstanding. Worth every rupee."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div class="testimonial-author-info"><h4>Rahul Mehta</h4><span>Founder, ShopEase</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Professional, responsive, and highly skilled. DeployStacker delivered our project on time and the quality of work is truly premium. We'll definitely work with them again."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">V</div>
+          <div class="testimonial-author-info"><h4>Vikram Patel</h4><span>Operations Head, EcoWave</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"They redesigned our entire brand identity and website. The new site looks stunning and our bounce rate dropped by 35% in the first month after launch."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">N</div>
+          <div class="testimonial-author-info"><h4>Neha Kapoor</h4><span>Brand Manager, StyleHub</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The team at DeployStacker is incredibly talented. They took our vague idea and turned it into a polished, fully functional product. Communication was excellent throughout."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div class="testimonial-author-info"><h4>Sanjay Rao</h4><span>CTO, TechBridge Solutions</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card-full fade-up delay-3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Fast, reliable, and creative. DeployStacker built our agency website and it's been a game-changer for attracting new clients. The design is exactly what we envisioned."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div class="testimonial-author-info"><h4>Maya Singh</h4><span>Director, Pixel Creative Agency</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform Ratings -->
+    <div class="platforms-grid fade-up">
+      <div class="platform-card">
+        <span class="platform-logo">🔷</span>
+        <h4>Upwork</h4>
+        <div class="platform-stars">★★★★★</div>
+        <div class="platform-count">4.9 · 80+ Reviews</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-logo">🟠</span>
+        <h4>Clutch</h4>
+        <div class="platform-stars">★★★★★</div>
+        <div class="platform-count">5.0 · 40+ Reviews</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-logo">🔴</span>
+        <h4>Google</h4>
+        <div class="platform-stars">★★★★★</div>
+        <div class="platform-count">4.9 · 60+ Reviews</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-logo">🟢</span>
+        <h4>Trustpilot</h4>
+        <div class="platform-stars">★★★★★</div>
+        <div class="platform-count">4.8 · 35+ Reviews</div>
+      </div>
+      <div class="platform-card">
+        <span class="platform-logo">🟣</span>
+        <h4>Fiverr</h4>
+        <div class="platform-stars">★★★★★</div>
+        <div class="platform-count">5.0 · 50+ Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-content fade-up">
+        <h2>Ready to become our next <span>success story?</span></h2>
+        <p>Join 180+ happy clients who trust DeployStacker to build their digital presence.</p>
+      </div>
+      <div class="cta-actions fade-up delay-2">
+        <a href="contact.html" class="btn btn-primary">Start Your Project <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span></a>
+        <a href="portfolio.html" class="btn btn-outline-white">View Our Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/placeholders.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
