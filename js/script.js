@@ -541,6 +541,7 @@ function initBookingForm() {
 
     const data = new FormData(form);
     const endpoint = form.dataset.ajaxAction || form.getAttribute("action");
+    const fallbackEndpoint = form.dataset.fallbackAction || "";
     const submitBtn = qs('[type="submit"]', form);
     const originalSubmitLabel = submitBtn ? submitBtn.innerHTML : "";
 
@@ -600,6 +601,38 @@ function initBookingForm() {
       updateSteps();
     } catch (error) {
       console.error(error);
+
+      if (fallbackEndpoint) {
+        try {
+          const fallbackResponse = await fetch(fallbackEndpoint, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (!fallbackResponse.ok) throw new Error("Fallback submit failed");
+
+          if (sendWhatsappBtn) {
+            sendWhatsappBtn.dataset.url = waUrl;
+          }
+
+          if (successPopup) {
+            successPopup.classList.add("show");
+            document.body.style.overflow = "hidden";
+          }
+
+          form.reset();
+          qsa(".option-chip", form).forEach((chip) => chip.classList.remove("active"));
+          currentStep = 0;
+          updateSteps();
+          return;
+        } catch (fallbackError) {
+          console.error(fallbackError);
+        }
+      }
+
       window.alert("Could not submit your inquiry. Please try again.");
     } finally {
       if (submitBtn) {

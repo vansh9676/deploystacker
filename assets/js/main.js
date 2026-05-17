@@ -215,6 +215,7 @@
     if (!valid) return;
 
     const endpoint = form.dataset.ajaxAction || form.getAttribute('action');
+    const fallbackEndpoint = form.dataset.fallbackAction || '';
     if (!endpoint) return;
 
     btn.innerHTML = '<span>Sending…</span>';
@@ -239,6 +240,31 @@
       }, 3000);
     } catch (err) {
       console.error(err);
+
+      if (fallbackEndpoint) {
+        try {
+          const fallbackRes = await fetch(fallbackEndpoint, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+
+          if (!fallbackRes.ok) throw new Error('Fallback submit failed');
+
+          btn.innerHTML = '<span>✓ Message Sent!</span>';
+          btn.style.background = '#22c55e';
+          form.reset();
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 3000);
+          return;
+        } catch (fallbackErr) {
+          console.error(fallbackErr);
+        }
+      }
+
       btn.innerHTML = '<span>Try Again</span>';
       btn.style.background = '#ef4444';
       btn.disabled = false;
