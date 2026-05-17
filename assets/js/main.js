@@ -214,7 +214,7 @@
     });
     if (!valid) return;
 
-    const endpoint = form.getAttribute('action');
+    const endpoint = form.dataset.ajaxAction || form.getAttribute('action');
     if (!endpoint) return;
 
     btn.innerHTML = '<span>Sending…</span>';

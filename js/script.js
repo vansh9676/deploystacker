@@ -540,7 +540,7 @@ function initBookingForm() {
     if (!validateStep()) return;
 
     const data = new FormData(form);
-    const endpoint = form.getAttribute("action");
+    const endpoint = form.dataset.ajaxAction || form.getAttribute("action");
     const submitBtn = qs('[type="submit"]', form);
     const originalSubmitLabel = submitBtn ? submitBtn.innerHTML : "";
 
