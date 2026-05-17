@@ -248,8 +248,9 @@
       <div class="section-label" style="justify-content:center; color:rgba(255,255,255,0.5);">Newsletter</div>
       <h2 style="color:white; margin-bottom:0.75rem;">Stay ahead of the <span style="color:var(--color-accent)">curve</span></h2>
       <p style="color:rgba(255,255,255,0.55); max-width:480px; margin:0 auto 2rem;">Get our latest articles on web development, AI, and digital growth delivered straight to your inbox. No spam, ever.</p>
-      <form style="display:flex; gap:12px; max-width:480px; margin:0 auto; flex-wrap:wrap;" onsubmit="return false;">
-        <input type="email" placeholder="Enter your email address" style="flex:1; min-width:200px; padding:14px 20px; border-radius:var(--radius-full); border:1.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.08); color:white; font-size:var(--fs-sm); outline:none;">
+      <form style="display:flex; gap:12px; max-width:480px; margin:0 auto; flex-wrap:wrap;" action="https://formspree.io/f/xaqaklbv" method="POST">
+        <input type="hidden" name="form_name" value="Newsletter Signup">
+        <input type="email" name="email" placeholder="Enter your email address" required style="flex:1; min-width:200px; padding:14px 20px; border-radius:var(--radius-full); border:1.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.08); color:white; font-size:var(--fs-sm); outline:none;">
         <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
     </div>

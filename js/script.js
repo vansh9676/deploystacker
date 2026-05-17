@@ -535,11 +535,22 @@ function initBookingForm() {
 
   qs("#closeBookingPopup")?.addEventListener("click", closeSuccess);
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!validateStep()) return;
 
     const data = new FormData(form);
+    const endpoint = form.getAttribute("action");
+    const submitBtn = qs('[type="submit"]', form);
+    const originalSubmitLabel = submitBtn ? submitBtn.innerHTML : "";
+
+    if (!endpoint) return;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+    }
+
     const name = data.get("name") || "";
     const email = data.get("email") || "";
     const phone = data.get("phone") || "";
@@ -562,19 +573,40 @@ function initBookingForm() {
     ].join("\n");
 
     const waUrl = `https://wa.me/919996005270?text=${encodeURIComponent(message)}`;
-    if (sendWhatsappBtn) {
-      sendWhatsappBtn.dataset.url = waUrl;
-    }
 
-    if (successPopup) {
-      successPopup.classList.add("show");
-      document.body.style.overflow = "hidden";
-    }
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-    form.reset();
-    qsa(".option-chip", form).forEach((chip) => chip.classList.remove("active"));
-    currentStep = 0;
-    updateSteps();
+      if (!response.ok) throw new Error("Form submit failed");
+
+      if (sendWhatsappBtn) {
+        sendWhatsappBtn.dataset.url = waUrl;
+      }
+
+      if (successPopup) {
+        successPopup.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      form.reset();
+      qsa(".option-chip", form).forEach((chip) => chip.classList.remove("active"));
+      currentStep = 0;
+      updateSteps();
+    } catch (error) {
+      console.error(error);
+      window.alert("Could not submit your inquiry. Please try again.");
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalSubmitLabel;
+      }
+    }
   });
 
   sendWhatsappBtn?.addEventListener("click", () => {
